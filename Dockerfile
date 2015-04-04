@@ -1,3 +1,5 @@
+# Build with: docker build -t="wmernagh/ruby193-coffee-phantom-node:v3" .
+# Push with: docker push wmernagh/ruby193-coffee-phantom-node:v3
 FROM ruby:1.9.3-p547
 MAINTAINER Will Mernagh <wmernagh@gmail.com>
 
@@ -7,7 +9,7 @@ RUN curl -sL https://deb.nodesource.com/setup | bash -
  
 # Install dependencies needed by Rails, followed by cleanup
 RUN apt-get update -q && \
-    apt-get install -qy postgresql-client build-essential libpq-dev libqt4-dev xvfb nodejs imagemagick --no-install-recommends && \
+    apt-get install -qy build-essential postgresql-client libpq-dev libqt4-dev xvfb nodejs imagemagick libqtwebkit4 libqtwebkit-dev --no-install-recommends && \
     apt-get clean && \
     npm install -g coffee-script && \
     npm install -g gulp && \
@@ -23,3 +25,12 @@ RUN cd /tmp && \
 
 RUN adduser web --home /home/web --shell /bin/bash --disabled-password --gecos ""
 RUN mkdir -p /ruby_gems/1.9.3 && chmod 755 /ruby_gems/1.9.3
+
+RUN mkdir /webapp
+
+USER web
+
+ENV GEM_HOME /ruby_gems/1.9.3
+ENV PATH /ruby_gems/1.9.3/bin:$PATH
+
+WORKDIR /webapp

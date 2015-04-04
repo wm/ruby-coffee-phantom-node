@@ -27,6 +27,7 @@ RUN adduser web --home /home/web --shell /bin/bash --disabled-password --gecos "
 RUN mkdir -p /ruby_gems/1.9.3 && chmod 755 /ruby_gems/1.9.3
 
 RUN mkdir /webapp
+RUN gem update --system
 
 USER web
 

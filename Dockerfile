@@ -11,7 +11,7 @@ RUN curl -sL https://deb.nodesource.com/setup | bash -
 RUN apt-get update -q && \
     apt-get install -qy build-essential postgresql-client libpq-dev libqt4-dev xvfb nodejs imagemagick libqtwebkit4 libqtwebkit-dev --no-install-recommends && \
     apt-get clean && \
-    apt-get install libc6-dev=2.17-7
+    apt-get install libc6-dev=2.17-7 && \
     npm install -g coffee-script && \
     npm install -g gulp && \
     cd /var/lib/apt/lists && rm -fr *Release* *Sources* *Packages* && \

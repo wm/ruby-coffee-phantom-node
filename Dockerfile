@@ -1,6 +1,6 @@
 # Build with: docker build -t="wmernagh/ruby193-coffee-phantom-node:v3" .
 # Push with: docker push wmernagh/ruby193-coffee-phantom-node:v3
-FROM ruby:1.9.3-p547
+FROM ruby:2.0.0
 MAINTAINER Will Mernagh <wmernagh@gmail.com>
 
 # If you don't want to use therubyracer gem or similar,
